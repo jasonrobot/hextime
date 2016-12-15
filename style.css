@@ -1,23 +1,66 @@
+.container {
+    height: 100%;
+    width: 100%;
+}
+
 #clock {
     font-family: monospace;
     font-size: 5em;
 }
 
-.analog-clock__body {
-    width: 400px;
-    height: 400px;
-    border-radius: 200px;
-    border-style: solid;
-    border-color: black;
+#analog {
+    position: relative;
+    width: 40em;
+    height: 40em;
+    margin: 2em;
+    background-size: 40em 40em;
+    background-image: url(clock.png);
+    background-repeat: no-repeat;
+    list-style: none;
 }
 
-.analog-clock__face {
-    width: 500px;
-    height: 500px;
+#h1, #h2, #h3, #h4 {
+    position: absolute;
+    transform-origin: bottom;
 }
 
-#h1-hand {
-    width: 16px;
-    height: 150px;
-    background-color: #c22;
+#h1 {
+    width: 0.6em;
+    height: 10em;
+    background: #C22;
+    border-radius: 3px;
+    top: 10em;
+    left: 19.4em;
+    z-index: 5;
+}
+
+#h2 {
+    width: 0.5em;
+    height: 13em;
+    background: black;
+    border-radius: 2px;
+    top: 7em;
+    left: 19.5em;
+    z-index: 4;
+}
+
+#h3 {
+    width: 0.4em;
+    height: 16em;
+    background: #C22;
+    border-radius: 2px;
+    top: 4em;
+    left: 19.6em;
+    z-index: 3;
+}
+
+#h4 {
+    width: 0.3em;
+    height: 19em;
+    background: black;
+    border-radius: 1px;
+    top: 1em;
+    left: 19.7em;
+    z-index: 2;
+//    transition: all 0.25s linear;
 }
