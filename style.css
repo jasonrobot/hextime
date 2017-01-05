@@ -5,6 +5,7 @@ body {
 .container {
     height: 100%;
     width: 100%;
+    margin-bottom: -8em;
 }
 
 #clock {
@@ -67,4 +68,8 @@ body {
     left: 19.7em;
     z-index: 2;
 //    transition: all 0.25s linear;
+}
+
+.converter input[type='text'] {
+    width: 3em;
 }

@@ -15,6 +15,32 @@
 	  <li id="h4"></li>
 	</ul>
       </div>
+      <div class="converter">
+	<div class="converter_hex">
+	  <label>
+	    Hexadecimal Time
+	  </label>
+	  <input type="text" name="h1s" id="converter_h1">
+	  :
+	  <input type="text" name="h2s" id="converter_h2">
+	  :
+	  <input type="text" name="h3s" id="converter_h3">
+	  ,
+	  <input type="text" name="h4s" id="converter_h4">
+	  <button onclick="convertHexToHMS();">to standard</button>
+	</div>
+	<div class="converter_std">
+	  <label>
+	    Standard Time:
+	  </label>
+	  <input type="text" name="hours" id="converter_hour">
+	  :
+	  <input type="text" name="minutes" id="converter_minute">
+	  :
+	  <input type="text" name="seconds" id="converter_second">
+	  <button onclick="convertHMStoHex();">to hex</button>
+	</div>
+      </div>
     </center>
   </body>
 </html>
