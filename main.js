@@ -43,10 +43,10 @@ function convertHMStoHex (hours, minutes, seconds) {
   var millisInDay = (hours * 3600000) + (minutes * 60000) + (seconds * 1000);
   var hexTime = convertFromMilliseconds(millisInDay);
 
-  $("#converter_h1").val(hexTime[0]);
-  $("#converter_h2").val(hexTime[1]);
-  $("#converter_h3").val(hexTime[2]);
-  $("#converter_h4").val(hexTime[3]);
+  $("#converter_h1").val(toHex(hexTime[0]));
+  $("#converter_h2").val(toHex(hexTime[1]));
+  $("#converter_h3").val(toHex(hexTime[2]));
+  $("#converter_h4").val(toHex(hexTime[3]));
   console.log("convert");
 }
 
@@ -58,9 +58,9 @@ function convertHexToHMS (h1, h2, h3, h4) {
 
   var millisInDay = (h1 * 5400000) + (h2 * (675000/2)) + (h3 * (675000/32)) + (h4 * (675000/8192));
 
-  $("#converter_hour").val(millisInDay % 3600000);
-  $("#converter_minute").val(millisInDay % 60000);
-  $("#converter_second").val(millisInDay % 1000);
+  $("#converter_hour").val(millisInDay / 3600000);
+  $("#converter_minute").val((millisInDay / 60000) % 60);
+  $("#converter_second").val((millisInDay / 1000) % 60);
   return false;
 }
 
