@@ -17,7 +17,7 @@ body {
     position: relative;
     width: 40em;
     height: 40em;
-    margin: 2em;
+    margin: 3em;
     background-size: 40em 40em;
     background-image: url(clock.png);
     background-repeat: no-repeat;
@@ -32,7 +32,7 @@ body {
 #h1 {
     width: 0.6em;
     height: 10em;
-    background: #C22;
+    background: #000;
     border-radius: 3px;
     top: 10em;
     left: 19.4em;
@@ -42,7 +42,7 @@ body {
 #h2 {
     width: 0.5em;
     height: 13em;
-    background: black;
+    background: #C22;
     border-radius: 2px;
     top: 7em;
     left: 19.5em;
@@ -52,7 +52,7 @@ body {
 #h3 {
     width: 0.4em;
     height: 16em;
-    background: #C22;
+    background: #000;
     border-radius: 2px;
     top: 4em;
     left: 19.6em;
@@ -62,12 +62,36 @@ body {
 #h4 {
     width: 0.3em;
     height: 19em;
-    background: black;
+    background: #C22;
     border-radius: 1px;
     top: 1em;
     left: 19.7em;
     z-index: 2;
 //    transition: all 0.25s linear;
+}
+
+#num0, #num4, #num8, #numC {
+    position: absolute;
+    font-size: 3em;
+}
+
+#num0 {
+    top: 13.1em;
+    left: 6.4em;
+}
+
+#num4 {
+    top: 6em;
+    left: -1em;
+}
+#num8 {
+    top: -1.2em;
+    left: 6.4em;
+}
+
+#numC {
+    top: 6em;
+    left: 13.7em;
 }
 
 .converter input[type='text'] {

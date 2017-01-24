@@ -77,30 +77,30 @@ function updateTime() {
 }
 
 function updateText() {
-  $("#clock").text(toHex(h1) + ':' + toHex(h2) + ':' + toHex(h3) + ',' + toHex(h4) + '.' + toHex(h5));
+  $("#clock").text(toHex(h1) + ':' + toHex(h2) + ':' + toHex(h3) + '-' + toHex(h4) + '.' + toHex(h5));
 }
 
 function updateAnalog() {
   $("#h1").css({"transform": "rotate(" + h1pos() + "deg)"});
   $("#h2").css({"transform": "rotate(" + h2pos() + "deg)"});
   $("#h3").css({"transform": "rotate(" + h3pos() + "deg)"});
-  $("#h4").css({"transform": "rotate(" + h4pos() + "deg)"});
+//  $("#h4").css({"transform": "rotate(" + h4pos() + "deg)"});
 }
 
 function h1pos() {
-  return (h1 * 22.5) + (h2 * (22.5/16)) + (h3 * (22.5/256));
+  return (h1 * 22.5) + (h2 * (22.5/16)) + (h3 * (22.5/256)) + 180;
 }
 
 function h2pos() {
-  return (h2 * 22.5) + (h3 * (22.5/16)) + (h4 * (22.5/256));
+  return (h2 * 22.5) + (h3 * (22.5/16)) + (h4 * (22.5/256)) + 180;
 }
 
 function h3pos() {
-  return (h3 * 22.5) + (h4 * (22.5/16)) + (h5 * (22.5/256));
+  return (h3 * 22.5) + (h4 * (22.5/16)) + (h5 * (22.5/256)) + 180;
 }
 
 function h4pos() {
-  return (h4 * 22.5) + (h5 * (22.5/16));
+  return (h4 * 22.5) + (h5 * (22.5/16)) + 180;
 }
 
 window.setInterval(updateTime, 83);
