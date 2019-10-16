@@ -8,7 +8,7 @@
 import {
     // __,
     compose,
-    curry,
+    // curry,
     divide,
     flip,
     // invoker,
@@ -29,15 +29,21 @@ export const msOfDay = flip(modulo)(86400000);
 // const divmod16 = compose(floor, flip(modulo)(16), flip(divide)(16));
 
 /**
- * Kinda hate this
  * (conversionFactor : number) -> (Date) -> number
  */
-const hh = compose(
-    curry(compose(
-        floor,
-        flip(modulo)(16),
-        flip(divide),
-    )),
+// kinda hate this implementation
+// const hh = compose(
+//     curry(compose(
+//         floor,
+//         flip(modulo)(16),
+//         flip(divide),
+//     )),
+//     msOfDay,
+// );
+const hh = factor => compose(
+    floor,
+    flip(modulo)(16),
+    flip(divide)(factor),
     msOfDay,
 );
 
