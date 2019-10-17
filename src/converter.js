@@ -19,6 +19,8 @@ import {
     // multiply,
     // prop,
 } from 'ramda';
+// Ramda doesn't have it, but I want it.
+const fmap = curry((fns, args) => fns.map(fn => fn(args)));
 
 const {
     floor,
@@ -60,3 +62,9 @@ export const h3 = hh(675000 / 32);
 export const h4 = hh(675000 / 512);
 // h5 :: (Date) -> number
 export const h5 = hh(675000 / 8192);
+
+// const mht = d => map(flip(call)(d), [h1, h2, h3, h4, h5]);
+// const mht = d => map(f => f(d), [h1, h2, h3, h4, h5]);
+export const makeHexTime = fmap([h1, h2, h3, h4, h5]);
+
+export const convertHMStoHex = (h, m, s) => makeHexTime(new Date(h, m, s));
