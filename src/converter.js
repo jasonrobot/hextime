@@ -6,13 +6,16 @@
  */
 
 import {
-    // __,
+    __,
+    // call,
     compose,
-    // curry,
+    curry,
     divide,
-    flip,
-    // invoker,
-    modulo,
+    // flip,
+    invoker,
+    // map,
+    mathMod,
+    // modulo,
     // multiply,
     // prop,
 } from 'ramda';
@@ -23,7 +26,7 @@ const {
 
 // function millisecondOfDay(date) { return modulo(date.getTime(), 86400000); }
 
-export const msOfDay = flip(modulo)(86400000);
+export const msOfDay = compose(mathMod(__, 86400000), invoker(0, 'getTime'));
 
 // const mod16 = flip(modulo)(16);
 // const divmod16 = compose(floor, flip(modulo)(16), flip(divide)(16));
@@ -42,8 +45,8 @@ export const msOfDay = flip(modulo)(86400000);
 // );
 const hh = factor => compose(
     floor,
-    flip(modulo)(16),
-    flip(divide)(factor),
+    mathMod(__, 16),
+    divide(__, factor),
     msOfDay,
 );
 
