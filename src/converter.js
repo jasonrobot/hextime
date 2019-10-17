@@ -6,29 +6,25 @@
  */
 
 import {
-    __,
+    // ap,
     // call,
     compose,
-    curry,
     divide,
-    // flip,
+    flip,
     invoker,
+    juxt,
     // map,
     mathMod,
     // modulo,
     // multiply,
     // prop,
 } from 'ramda';
-// Ramda doesn't have it, but I want it.
-const fmap = curry((fns, args) => fns.map(fn => fn(args)));
 
 const {
     floor,
 } = Math;
 
-// function millisecondOfDay(date) { return modulo(date.getTime(), 86400000); }
-
-export const msOfDay = compose(mathMod(__, 86400000), invoker(0, 'getTime'));
+export const msOfDay = compose(flip(mathMod)(86400000), invoker(0, 'getTime'));
 
 // const mod16 = flip(modulo)(16);
 // const divmod16 = compose(floor, flip(modulo)(16), flip(divide)(16));
@@ -36,19 +32,10 @@ export const msOfDay = compose(mathMod(__, 86400000), invoker(0, 'getTime'));
 /**
  * (conversionFactor : number) -> (Date) -> number
  */
-// kinda hate this implementation
-// const hh = compose(
-//     curry(compose(
-//         floor,
-//         flip(modulo)(16),
-//         flip(divide),
-//     )),
-//     msOfDay,
-// );
 const hh = factor => compose(
     floor,
-    mathMod(__, 16),
-    divide(__, factor),
+    flip(mathMod)(16),
+    flip(divide)(factor),
     msOfDay,
 );
 
@@ -65,6 +52,10 @@ export const h5 = hh(675000 / 8192);
 
 // const mht = d => map(flip(call)(d), [h1, h2, h3, h4, h5]);
 // const mht = d => map(f => f(d), [h1, h2, h3, h4, h5]);
-export const makeHexTime = fmap([h1, h2, h3, h4, h5]);
+export const makeHexTime = juxt([h1, h2, h3, h4, h5]);
 
 export const convertHMStoHex = (h, m, s) => makeHexTime(new Date(h, m, s));
+
+export const convertHexToHMS = (h1, h2, h3, h4, h5 = 0) => {
+};
+
