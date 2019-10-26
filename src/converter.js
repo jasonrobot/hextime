@@ -54,8 +54,16 @@ const conversionFactors = [
 ];
 
 // makeHexTime :: Date => [number]
+/**
+ * @param {Date} date The date to convert to hex time.
+ * @returns {number[]} The hex time split into segments.
+ */
 const makeHexTime = juxt(map(hh, conversionFactors));
 
+/**
+ * @param {number[]} hexSegments
+ * @returns {number} The number of milliseconds passed in the day.
+ */
 const hexToMillis = compose(
     reduce(add, 0),
     zipWith(multiply, conversionFactors),
@@ -75,15 +83,6 @@ export class HexTime {
             [map(equals(type('Number')), args)],
         ]);
     }
-
-    /* eslint-disable class-methods-use-this */
-    /**
-     * Use a setter with no effect to prevent setting this.times directly.
-     */
-    // set times(_) {
-    //     throw new Error('Don\'t set times directly.');
-    // }
-    /* eslint-enable class-methods-use-this */
 
     toDate() {
         return new Date((new Date()).getTime() + hexToMillis(this.times));
