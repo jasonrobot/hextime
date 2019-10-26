@@ -25,6 +25,7 @@ import {
     multiply,
     // prop,
     reduce,
+    take,
     type,
     zipWith,
 } from 'ramda';
@@ -51,6 +52,8 @@ const conversionFactors = [
     675000 / 32,
     675000 / 512,
     675000 / 8192,
+    675000 / 131072,
+
 ];
 
 // makeHexTime :: Date => [number]
@@ -58,7 +61,7 @@ const conversionFactors = [
  * @param {Date} date The date to convert to hex time.
  * @returns {number[]} The hex time split into segments.
  */
-const makeHexTime = juxt(map(hh, conversionFactors));
+const makeHexTime = (precision = 5) => juxt(take(precision, map(hh)(conversionFactors)));
 
 /**
  * @param {number[]} hexSegments
@@ -71,7 +74,7 @@ const hexToMillis = compose(
 
 export class HexTime {
     static fromDateObject(date) {
-        return makeHexTime(date);
+        return makeHexTime()(date);
     }
 
     constructor(...args) {
