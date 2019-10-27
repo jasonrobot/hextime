@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <!-- <script type="module" src="./hex-clock.js"></script> -->
+        <script src="./dist/bundle.js"></script>
+    </head>
+    <body>
+        hex clock:
+        <!-- this one only goes to h3 -->
+        <hex-clock zero-position="180" numerals="0 4 8 C" tick-rate="21093">
+            <clock-hand positions="16"></clock-hand>
+            <clock-hand positions="16"></clock-hand>
+            <clock-hand positions="16"></clock-hand>
+        </hex-clock>
+        hex clock:
+        <!-- this goes to h4, which is about as fast as is useful -->
+        <hex-clock zero-position="180" numerals="0 4 8 C" tick-rate="1318">
+            <clock-hand positions="16"></clock-hand>
+            <clock-hand positions="16"></clock-hand>
+            <clock-hand positions="16"></clock-hand>
+            <clock-hand positions="16"></clock-hand>
+        </hex-clock>
+        normal clock:
+        <hex-clock zero-position="0" numerals="0 3 6 9" tick-rate="1000">
+            <clock-hand positions="12"></clock-hand>
+            <clock-hand positions="60"></clock-hand>
+            <clock-hand positions="60"></clock-hand>
+        </hex-clock>
+    </body>
+</html>

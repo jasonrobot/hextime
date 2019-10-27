@@ -1,0 +1,17 @@
+name: irrelevant
+version: 0.1.0
+
+authors:
+  - Jason Howell <jasonrobot64@gmail.com>
+
+targets:
+  server:
+    main: server.cr
+
+crystal: 0.30.1
+
+license: MIT
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
