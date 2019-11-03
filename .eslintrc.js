@@ -21,7 +21,14 @@ module.exports = {
     },
     rules: {
         indent: ['error', 4],
-
+        'no-underscore-dangle': [
+            'error',
+            {
+                'allowAfterThis': true,
+                // 'allowAfterSuper': true,
+                // 'enforceInMethodNames': false
+            }
+        ],
         //ramda rules
         // 'ramda/always-simplification': 'error',
         // 'ramda/any-pass-simplification': 'error',

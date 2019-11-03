@@ -1,0 +1,88 @@
+body {
+    background-color: #555;
+}
+
+hex-clock {
+
+    display: inline-block;
+
+    $clock-size: 400px;
+
+    $main-hand-color: #000;
+    $secondary-hand-color: #C22;
+
+    display: block;
+    position: relative;
+    height: $clock-size;
+    width: $clock-size;
+    border: $clock-size / 100 solid $main-hand-color;
+    border-radius: $clock-size / 2;
+
+    .digital-clock {
+        font-family: monospace;
+
+    }
+
+    clock-hand {
+        position: absolute;
+        transform-origin: bottom;
+
+        bottom: $clock-size / 2;
+        // left: $clock-size / 2;
+        transform: translateX(50%);
+
+        // border-style: solid;
+    }
+
+    clock-hand:nth-of-type(2n) {
+        background-color: $secondary-hand-color;
+        // border-color: $secondary-hand-color;
+    }
+
+    clock-hand:nth-of-type(2n+1) {
+        background-color: $main-hand-color;
+        // border-color: $main-hand-color;
+    }
+
+    // height and width of clock hands
+
+    @for $i from 1 through 4 {
+        clock-hand:nth-of-type(#{$i}) {
+            $width: $clock-size / (40 + (20 * $i));
+            height: $clock-size / (5 - $i);
+            width: $width;
+            left: ($clock-size / 2) - ($width / 1);
+        }
+    }
+
+    // clock-hand:nth-of-type(1) {
+    //     height: $clock-size / 4;
+    //     width: $clock-size / 60;
+    // }
+
+    // clock-hand:nth-of-type(2) {
+    //     height: $clock-size / 3;
+    //     width: $clock-size / 80;
+    // }
+
+    // clock-hand:nth-of-type(3) {
+    //     height: $clock-size / 2.5;
+    //     width: $clock-size / 100;
+    // }
+
+    // clock-hand:nth-of-type(4) {
+    //     height: $clock-size / 2;
+    //     width: $clock-size / 120;
+    // }
+
+    // clock-hand:nth-of-type(5) {
+    //     height: $clock-size / 4;
+    //     width: $clock-size / 24;
+    // }
+
+    // clock-hand:nth-of-type(6) {
+    //     height: $clock-size / 4;
+    //     width: $clock-size / 24;
+    // }
+
+}

@@ -8,8 +8,13 @@
     "license": "GPL-3.0-or-later",
     "private": false,
     "dependencies": {
+        "css-loader": "^3.2.0",
+        "node-sass": "^4.13.0",
         "ramda": "^0.26.1",
         "redux": "^4.0.4",
+        "sass": "^1.23.2",
+        "sass-loader": "^8.0.0",
+        "style-loader": "^1.0.0",
         "webpack": "^4.41.2"
     },
     "devDependencies": {
