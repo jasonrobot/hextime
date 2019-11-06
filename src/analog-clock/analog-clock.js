@@ -1,15 +1,34 @@
 import * as R from 'ramda';
 
 // import ClockHand from './clock-hand';
+const styleString = require('./analog-clock.css').toString();
+const view = require('./analog-clock.mhtml');
 
-
-export default class HexClock extends HTMLElement {
+export default class AnalogClock extends HTMLElement {
     static get observedAttributes() {
         return [
             'numerals',
             'tick-rate',
             'zero-position',
         ];
+    }
+
+    static constructContent(instance) {
+        const shadowRoot = instance.attachShadow({ mode: 'open' });
+
+        shadowRoot.innerHTML = view();
+
+        const style = document.createElement('style');
+        style.textContent = styleString;
+        shadowRoot.appendChild(style);
+        // shadowRoot.appendChild(styleString);
+    }
+
+    constructor() {
+        super();
+        this.constructor.constructContent(this);
+
+        console.log('ctor\'d clock');
     }
 
     get numerals() {
@@ -25,7 +44,8 @@ export default class HexClock extends HTMLElement {
     }
 
     updateTime() {
-
+        // this.shadowRoot.querySelector('clock-hand[slot="h1"]').tick();
+        document.querySelector('analog-clock-hand').sayHello();
     }
 
     positionNumerals() {
@@ -35,7 +55,7 @@ export default class HexClock extends HTMLElement {
 
     connectedCallback() {
         if (this.tickRate) {
-            this.intervalId = window.setInterval(this.updateTime, this.tickRate);
+            this.intervalId = window.setInterval(this.updateTime.bind(this), this.tickRate);
         }
         //need to set the initial time here
     }
@@ -50,4 +70,4 @@ export default class HexClock extends HTMLElement {
 
 }
 
-window.customElements.define('hex-clock', HexClock);
+window.customElements.define('analog-clock', AnalogClock);

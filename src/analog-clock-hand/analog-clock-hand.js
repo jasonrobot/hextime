@@ -1,12 +1,16 @@
 import * as R from 'ramda';
 
+const styleString = require('./analog-clock-hand.css').toString();
+
 function rotationDegrees(clockHand) {
     const { currentTick, tickCount } = clockHand;
-    return 90;
+    // return 90;
     return R.multiply(currentTick, R.divide(360, tickCount));
 }
 
-export default class ClockHand extends HTMLElement {
+const HAND_CLASS = 'analog-clock-hand__hand';
+
+export default class AnalogClockHand extends HTMLElement {
     static get observedAttributes() {
         return [
             'positions',
@@ -14,34 +18,44 @@ export default class ClockHand extends HTMLElement {
         ];
     }
 
+    static constructContent(instance) {
+        const shadowRoot = instance.attachShadow({ mode: 'open' });
+
+        const style = document.createElement('style');
+        style.textContent = styleString;
+        shadowRoot.appendChild(style);
+
+        // const hand = document.createElement('div');
+        // hand.classList.add(HAND_CLASS);
+        // shadowRoot.appendChild(hand);
+    }
+
     constructor() {
         super();
-
-        const shadowRoot = this.attachShadow({ mode: 'open' });
-        R.pipe(
-            R.map(R.bind(document.createElement, document)),
-            R.forEach(R.bind(shadowRoot.appendChild, shadowRoot)),
-        )(['style', 'div']);
-
         this._currentTick = 0;
+
+        this.constructor.constructContent(this);
+        console.log(this.shadowRoot.querySelector('div'));
     }
 
-    connectedCallback() {
-        // console.log('hand connected');
-    }
+    // connectedCallback() {
+    //     console.log('hand connected');
+    // }
 
     attributeChangedCallback() {
-        // console.log('attrChange');
+        console.log('attrChange');
         this.updateStyle();
+    }
+
+    sayHello() {
+        console.log('hello!');
     }
 
     updateStyle() {
         console.log(rotationDegrees(this));
-        this.shadowRoot.querySelector('style').textContent = `
-.hand {
-    transform: rotate(${rotationDegrees(this)}deg);
-}
-`;
+        // What the fuck is my document context gonna even be here?
+        const hand = document.getElementsByClassName(HAND_CLASS);
+        // transform rotation = rotationDegees(this);
     }
 
     /**
@@ -69,4 +83,4 @@ export default class ClockHand extends HTMLElement {
     }
 }
 
-window.customElements.define('clock-hand', ClockHand);
+window.customElements.define('analog-clock-hand', AnalogClockHand);

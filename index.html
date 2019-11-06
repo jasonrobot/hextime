@@ -4,27 +4,27 @@
         <script src="./dist/bundle.js"></script>
     </head>
     <body>
-        <!-- <clock-hand positions="16"></clock-hand> -->
+        <!-- <analog-clock-hand positions="16"></analog-clock-hand> -->
         hex clock:
         <!-- this one only goes to h3 -->
-        <hex-clock zero-position="180" numerals="0 4 8 C" tick-rate="21093">
-            <clock-hand positions="16"></clock-hand>
-            <clock-hand positions="16"></clock-hand>
-            <clock-hand positions="16"></clock-hand>
-        </hex-clock>
+        <analog-clock zero-position="180" numerals="0 4 8 C" tick-rate="21093">
+            <analog-clock-hand slot="h3" positions="16"></analog-clock-hand>
+            <analog-clock-hand slot="h2" positions="16"></analog-clock-hand>
+            <analog-clock-hand slot="h1" positions="16"></analog-clock-hand>
+        </analog-clock>
         <!-- hex clock: -->
         <!-- this goes to h4, which is about as fast as is useful -->
         <!-- <hex-clock zero-position="180" numerals="0 4 8 C" tick-rate="1318">
-             <clock-hand positions="16"></clock-hand>
-             <clock-hand positions="16"></clock-hand>
-             <clock-hand positions="16"></clock-hand>
-             <clock-hand positions="16"></clock-hand>
+             <analog-clock-hand positions="16"></analog-clock-hand>
+             <analog-clock-hand positions="16"></analog-clock-hand>
+             <analog-clock-hand positions="16"></analog-clock-hand>
+             <analog-clock-hand positions="16"></analog-clock-hand>
              </hex-clock> -->
         normal clock:
-        <hex-clock zero-position="0" numerals="0 3 6 9" tick-rate="1000">
-            <clock-hand positions="12"></clock-hand>
-            <clock-hand positions="60"></clock-hand>
-            <clock-hand positions="60"></clock-hand>
-        </hex-clock>
+        <analog-clock zero-position="0" numerals="0 3 6 9" tick-rate="1000">
+            <analog-clock-hand slot="h3" positions="12"></analog-clock-hand>
+            <analog-clock-hand slot="h2" positions="60"></analog-clock-hand>
+            <analog-clock-hand slot="h1" positions="60"></analog-clock-hand>
+        </analog-clock>
     </body>
 </html>

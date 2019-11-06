@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: './index.js',
+    entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
@@ -9,15 +9,34 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.scss$/i,
+                test: /\.css$/i,
                 use: [
                     // Creates `style` nodes from JS strings
-                    'style-loader',
+                    // 'style-loader',
+                    // { loader: 'style-loader', options: { injectType: 'styleTag' } },
                     // Translates CSS into CommonJS
                     'css-loader',
+                    // Get the direct string result of a CSS require, usefil for
+                    // webcomponents, since we'll just need to cram that into a
+                    // <style>
+                    // 'to-string-loader',
                     // Compiles Sass to CSS
-                    'sass-loader',
+                    // 'sass-loader',
                 ],
+            },
+            // {
+            //     test: /\.html$/,
+            //     use: [{
+            //         loader: 'html-loader',
+            //         options: {
+            //             minimize: true,
+            //         },
+            //     }],
+            // },
+            {
+                test: /\.mhtml$/,
+                // loader: 'mustache-loader',
+                loader: 'mustache-loader?minify',
             },
         ],
     },
