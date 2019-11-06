@@ -27,8 +27,6 @@ export default class AnalogClock extends HTMLElement {
     constructor() {
         super();
         this.constructor.constructContent(this);
-
-        console.log('ctor\'d clock');
     }
 
     get numerals() {
@@ -44,8 +42,7 @@ export default class AnalogClock extends HTMLElement {
     }
 
     updateTime() {
-        // this.shadowRoot.querySelector('clock-hand[slot="h1"]').tick();
-        document.querySelector('analog-clock-hand').sayHello();
+        this.querySelector('analog-clock-hand').tick();
     }
 
     positionNumerals() {
@@ -57,17 +54,12 @@ export default class AnalogClock extends HTMLElement {
         if (this.tickRate) {
             this.intervalId = window.setInterval(this.updateTime.bind(this), this.tickRate);
         }
-        //need to set the initial time here
+        // need to set the initial time here
     }
 
     disconnectedCallback() {
         window.clearInterval(this.intervalId);
     }
-
-    attributeChangedCallback() {
-
-    }
-
 }
 
 window.customElements.define('analog-clock', AnalogClock);

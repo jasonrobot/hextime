@@ -8,8 +8,6 @@ function rotationDegrees(clockHand) {
     return R.multiply(currentTick, R.divide(360, tickCount));
 }
 
-const HAND_CLASS = 'analog-clock-hand__hand';
-
 export default class AnalogClockHand extends HTMLElement {
     static get observedAttributes() {
         return [
@@ -24,10 +22,6 @@ export default class AnalogClockHand extends HTMLElement {
         const style = document.createElement('style');
         style.textContent = styleString;
         shadowRoot.appendChild(style);
-
-        // const hand = document.createElement('div');
-        // hand.classList.add(HAND_CLASS);
-        // shadowRoot.appendChild(hand);
     }
 
     constructor() {
@@ -35,27 +29,32 @@ export default class AnalogClockHand extends HTMLElement {
         this._currentTick = 0;
 
         this.constructor.constructContent(this);
-        console.log(this.shadowRoot.querySelector('div'));
+
+        this._initialTransform = this.style.getPropertyValue('transform');
     }
 
-    // connectedCallback() {
-    //     console.log('hand connected');
-    // }
+    set currentTick(value) {
+        const newTick = R.mathMod(value, this.tickCount);
+        this.setAttribute('current-tick', newTick);
+    }
+
+    get currentTick() {
+        return Number(this.getAttribute('current-tick'));
+    }
+
+    get tickCount() {
+        return Number(this.getAttribute('positions'));
+    }
 
     attributeChangedCallback() {
-        console.log('attrChange');
+        // console.log('attrChange');
         this.updateStyle();
     }
 
-    sayHello() {
-        console.log('hello!');
-    }
-
     updateStyle() {
-        console.log(rotationDegrees(this));
-        // What the fuck is my document context gonna even be here?
-        const hand = document.getElementsByClassName(HAND_CLASS);
-        // transform rotation = rotationDegees(this);
+        const deg = rotationDegrees(this);
+        const transform = `rotate(${deg}deg)`;
+        this.style.setProperty('transform', transform);
     }
 
     /**
@@ -65,21 +64,7 @@ export default class AnalogClockHand extends HTMLElement {
      * @returns {number}
      */
     tick(amount = 1) {
-        this.currentTick += amount;
-    }
-
-    set currentTick(value) {
-        const newTick = R.mathMod(value, this._currentTick);
-        this.setAttribute('current-tick', newTick);
-        this.updateStyle();
-    }
-
-    get currentTick() {
-        return this._currentTick;
-    }
-
-    get tickCount() {
-        return Number(this.getAttribute('positions'));
+        this.currentTick = this.currentTick + amount;
     }
 }
 

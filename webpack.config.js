@@ -24,6 +24,13 @@ module.exports = {
                     // 'sass-loader',
                 ],
             },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    'css-loader',
+                    'sass-loader',
+                ],
+            },
             // {
             //     test: /\.html$/,
             //     use: [{
