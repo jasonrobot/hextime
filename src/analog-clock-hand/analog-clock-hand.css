@@ -1,0 +1,29 @@
+:host {
+    display: block;
+    position: absolute;
+
+    width: 10px;
+
+    position: absolute;
+    transform-origin: bottom;
+
+    bottom: calc(var(--clock-size) / 2);
+    left: calc(var(--clock-size) / 2);
+}
+
+:host([slot="h1"]) {
+    background-color: var(--primary-hand-color);
+    height: 45%;
+}
+:host([slot="h2"]) {
+    background-color: var(--secondary-hand-color);
+    height: 40%;
+}
+:host([slot="h3"]) {
+    background-color: var(--primary-hand-color);
+    height: 35%;
+}
+:host([slot="h4"]) {
+    background-color: var(--secondary-hand-color);
+    height: 30%;
+}

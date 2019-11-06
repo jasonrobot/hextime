@@ -1,0 +1,19 @@
+:host {
+    --clock-size: 400px;
+
+    --primary-hand-color: #000;
+    --secondary-hand-color: #C22;
+    --frame-color: var(--primary-hand-color);
+
+    display: inline-block;
+    position: relative;
+
+    height: var(--clock-size);
+    width: var(--clock-size);
+
+    border: 4px solid var(--frame-color);
+    border-radius: calc(var(--clock-size) / 2);
+}
+
+.analog-clock__face {
+}
