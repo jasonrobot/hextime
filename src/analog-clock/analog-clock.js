@@ -21,7 +21,6 @@ export default class AnalogClock extends HTMLElement {
         const style = document.createElement('style');
         style.textContent = styleString;
         shadowRoot.appendChild(style);
-        // shadowRoot.appendChild(styleString);
     }
 
     constructor() {
@@ -42,7 +41,18 @@ export default class AnalogClock extends HTMLElement {
     }
 
     updateTime() {
-        this.querySelector('analog-clock-hand').tick();
+        const clockHands = [...this.querySelectorAll('analog-clock-hand')];
+        const sortedHands = clockHands.sort((a, b) => {
+            const attrA = Number(a.getAttribute('slot').replace('h', ''));
+            const attrB = Number(b.getAttribute('slot').replace('h', ''));
+            return attrA - attrB;
+        });
+        const tickNext = (hands) => {
+            if (hands.length > 0 && R.head(hands).tick() === 0) {
+                tickNext(R.tail(hands));
+            }
+        };
+        tickNext(sortedHands);
     }
 
     positionNumerals() {

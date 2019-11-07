@@ -65,6 +65,7 @@ export default class AnalogClockHand extends HTMLElement {
      */
     tick(amount = 1) {
         this.currentTick = this.currentTick + amount;
+        return this.currentTick;
     }
 }
 
