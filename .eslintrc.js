@@ -29,6 +29,16 @@ module.exports = {
                 // 'enforceInMethodNames': false
             }
         ],
+        'operator-linebreak': [
+            'error',
+            'after',
+            {
+                'overrides': {
+                    '?': 'before',
+                    ':': 'before'
+                }
+            }
+        ],
         //ramda rules
         // 'ramda/always-simplification': 'error',
         // 'ramda/any-pass-simplification': 'error',

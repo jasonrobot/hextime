@@ -1,3 +1,4 @@
+#! /usr/bin/crystal run
 require "http/server"
 
 handlers = [

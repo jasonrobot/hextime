@@ -27,3 +27,7 @@
     background-color: var(--secondary-hand-color);
     height: 30%;
 }
+:host([slot="h5"]) {
+    background-color: var(--primary-hand-color);
+    height: 25%;
+}

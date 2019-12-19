@@ -2,11 +2,8 @@ import * as R from 'ramda';
 
 const styleString = require('./analog-clock-hand.css').toString();
 
-function rotationDegrees(clockHand) {
-    const { currentTick, tickCount } = clockHand;
-    // return 90;
-    return R.multiply(currentTick, R.divide(360, tickCount));
-}
+const rotationDegrees =
+      ({ currentTick, tickCount }) => R.multiply(currentTick, R.divide(360, tickCount));
 
 export default class AnalogClockHand extends HTMLElement {
     static get observedAttributes() {
@@ -44,6 +41,10 @@ export default class AnalogClockHand extends HTMLElement {
 
     get tickCount() {
         return Number(this.getAttribute('positions'));
+    }
+
+    get handSlot() {
+        return Number(this.getAttribute('slot').replace('h'));
     }
 
     attributeChangedCallback() {

@@ -2,4 +2,5 @@
 <slot name="h2"></slot>
 <slot name="h3"></slot>
 <slot name="h4"></slot>
+<slot name="h5"></slot>
 <!-- <div>{{testing}}</div> -->

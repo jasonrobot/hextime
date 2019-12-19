@@ -42,11 +42,7 @@ export default class AnalogClock extends HTMLElement {
 
     updateTime() {
         const clockHands = [...this.querySelectorAll('analog-clock-hand')];
-        const sortedHands = clockHands.sort((a, b) => {
-            const attrA = Number(a.getAttribute('slot').replace('h', ''));
-            const attrB = Number(b.getAttribute('slot').replace('h', ''));
-            return attrA - attrB;
-        });
+        const sortedHands = clockHands.sort((a, b) => a.handSlot - b.handSlot);
         const tickNext = (hands) => {
             if (hands.length > 0 && R.head(hands).tick() === 0) {
                 tickNext(R.tail(hands));
@@ -62,7 +58,10 @@ export default class AnalogClock extends HTMLElement {
 
     connectedCallback() {
         if (this.tickRate) {
-            this.intervalId = window.setInterval(this.updateTime.bind(this), this.tickRate);
+            this.intervalId = window.setInterval(
+                this.updateTime.bind(this),
+                this.tickRate,
+            );
         }
         // need to set the initial time here
     }
