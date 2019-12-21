@@ -2187,6 +2187,13 @@ domexception@^1.0.1:
   dependencies:
     webidl-conversions "^4.0.2"
 
+domfu@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/domfu/-/domfu-0.3.0.tgz#6d1e9ed392b5d0dceea74a56f945a823eec8cf36"
+  integrity sha512-/QGU+kZPbiWY7gUfMOPyW5FpRJhGvzhPnoyzk6Rfwz5TQjOXR6B8iBuyl6+vpgPYFhroHcpHglv4LM9vx+NEYg==
+  dependencies:
+    ramda "^0.26.1"
+
 duplexify@^3.4.2, duplexify@^3.6.0:
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/duplexify/-/duplexify-3.7.1.tgz#2a4df5317f6ccfd91f86d6fd25d8d8a103b88309"

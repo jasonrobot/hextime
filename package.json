@@ -9,6 +9,7 @@
     "private": false,
     "dependencies": {
         "css-loader": "^3.2.0",
+        "domfu": "^0.3.0",
         "html-loader": "^0.5.5",
         "mustache-loader": "^1.4.3",
         "node-sass": "^4.13.0",
@@ -32,6 +33,7 @@
         "webpack-cli": "^3.3.9"
     },
     "scripts": {
-        "test": "jest"
+        "test": "jest",
+        "watch": "webpack --watch --mode development"
     }
 }

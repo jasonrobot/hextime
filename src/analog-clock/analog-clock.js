@@ -1,8 +1,9 @@
 import * as R from 'ramda';
+import D from 'domfu';
 
-// import ClockHand from './clock-hand';
+import view from './analog-clock-dom';
+
 const styleString = require('./analog-clock.css').toString();
-const view = require('./analog-clock.mhtml');
 
 export default class AnalogClock extends HTMLElement {
     static get observedAttributes() {
@@ -16,11 +17,9 @@ export default class AnalogClock extends HTMLElement {
     static constructContent(instance) {
         const shadowRoot = instance.attachShadow({ mode: 'open' });
 
-        shadowRoot.innerHTML = view();
+        shadowRoot.appendChild(D.style(styleString));
 
-        const style = document.createElement('style');
-        style.textContent = styleString;
-        shadowRoot.appendChild(style);
+        shadowRoot.append(view());
     }
 
     constructor() {
